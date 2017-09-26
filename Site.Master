@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="foSistemas.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <script lang="JavaScript">
+        document.oncontextmenu = function () { return false }
+        function Verificar() {
+            var tecla = window.event.keyCode;
+            if (tecla <= 123 && tecla >= 112) {
+                event.keyCode = 0;
+                event.returnValue = false;
+            }
+            if (tecla == 13) {
+                event.keyCode = 0;
+                event.returnValue = false;
+            }
+        }
+        function nobackbutton() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-No-back-button"
+            window.onhashchange = function () { window.location.hash = "no-back-button"; }
+        }
+    </script>
+    <title>Usuario</title>
+    <link href="~/Content/bootstrap.css?" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet">
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+    <link href="~/Content/plugins/morris.css" rel="stylesheet">
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onkeydown="javascript:Verificar()" onload="nobackbutton();" style="background-color: white">
+    <form runat="server" id="form">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div id="wrapper">
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
